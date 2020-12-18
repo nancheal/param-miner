@@ -119,7 +119,7 @@ public class BurpExtender implements IBurpExtender, IExtensionStateListener {
         }
 
         callbacks.registerHttpListener(paramGrabber);
-        callbacks.registerProxyListener(paramGrabber);
+        //callbacks.registerProxyListener(paramGrabber);
 
         SwingUtilities.invokeLater(new ConfigMenu());
 

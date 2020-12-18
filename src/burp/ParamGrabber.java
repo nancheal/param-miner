@@ -14,7 +14,7 @@ import static burp.Keysmith.getHtmlKeys;
 import static burp.Keysmith.getWords;
 
 
-public class ParamGrabber implements IProxyListener, IHttpListener {
+public class ParamGrabber implements IHttpListener {
 
     private Set<IHttpRequestResponse> savedJson = ConcurrentHashMap.newKeySet();
     private HashSet<ArrayList<String>> done = new HashSet<>();
@@ -39,6 +39,7 @@ public class ParamGrabber implements IProxyListener, IHttpListener {
             addCacheBusters(messageInfo);
         }
     }
+    /*
 
     public void processProxyMessage(boolean messageIsRequest, IInterceptedProxyMessage messageInfo) {
         if (!messageIsRequest) {
@@ -47,6 +48,7 @@ public class ParamGrabber implements IProxyListener, IHttpListener {
         }
     }
 
+     */
     Set<String> getSavedWords() {
         return savedWords;
     }
@@ -96,15 +98,18 @@ public class ParamGrabber implements IProxyListener, IHttpListener {
         messageInfo.setRequest(req);
     }
 
-    private void launchScan(IHttpRequestResponse messageInfo) {
+    void launchScan(IHttpRequestResponse messageInfo) {
         if (!Utilities.globalSettings.getBoolean("enable auto-mine")) {
             return;
         }
 
         IRequestInfo reqInfo = Utilities.helpers.analyzeRequest(messageInfo.getHttpService(), messageInfo.getRequest());
+        /*
         if (!Utilities.callbacks.isInScope(reqInfo.getUrl())) {
             return;
         }
+
+         */
 
         IResponseInfo respInfo = Utilities.helpers.analyzeResponse(messageInfo.getResponse());
         StringBuilder codeBuidler = new StringBuilder();
