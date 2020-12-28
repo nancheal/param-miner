@@ -13,8 +13,8 @@ public class GrabScan implements IScannerCheck {
 
     @Override
     public List<IScanIssue> doActiveScan(IHttpRequestResponse baseRequestResponse, IScannerInsertionPoint insertionPoint) {
-        //paramGrabber.saveParams(baseRequestResponse);
-        //paramGrabber.launchScan(baseRequestResponse);
+        paramGrabber.saveParams(baseRequestResponse);
+        paramGrabber.launchScan(baseRequestResponse);
         return new ArrayList<>();
     }
 

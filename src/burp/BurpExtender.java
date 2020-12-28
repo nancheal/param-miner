@@ -114,11 +114,9 @@ public class BurpExtender implements IBurpExtender, IExtensionStateListener {
         ParamGrabber paramGrabber = new ParamGrabber(taskEngine);
         callbacks.registerContextMenuFactory(new OfferParamGuess(callbacks, paramGrabber, taskEngine));
 
-        /*
         if(Utilities.isBurpPro()) {
             callbacks.registerScannerCheck(new GrabScan(paramGrabber));
         }
-        */
 
         callbacks.registerHttpListener(paramGrabber);
         //callbacks.registerProxyListener(paramGrabber);
